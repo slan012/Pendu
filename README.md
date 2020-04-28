@@ -1,2 +1,2 @@
 # Pendu
- Je du pendu en Python avec highscores
+ Jeu du pendu en Python avec highscores
