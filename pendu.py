@@ -4,6 +4,20 @@
 # début de partie le joueur donne son nom
 # si aucun score enregistré -> score = 0 pts => {'nom_joueur' : 0}
 mot ="test"
+lettre = 'a'
+mot = list(mot)
+print(mot)
+
+
+# Vérifie si une 'lettre' est dans le 'mot' et affiche le mot avec des étoiles sur les lettres qui n'y sont pas
+
+def verifier_lettre(lettre, mot) 
+	for i, element in enumerate(mot) :
+		if element != lettre :
+			mot[i] = '*'
+	mot = "".join(mot)
+	print("[ {} ]".format(mot))
+	
 
 
 	
