@@ -76,7 +76,7 @@ def entrer_nom_joueur(scores):
     nom_joueur = input("\nRentre ton nom : ")
     joueur_existe_deja = True  # Test si joueur est déjà dans la liste des scores
     while joueur_existe_deja:  # Parcours du tableau
-        for i in scores:
+        for i in scores.keys():
             while nom_joueur in i:
                 nom_joueur = input("Nom de joueur déjà existant, essaye un autre nom :")
         joueur_existe_deja = False

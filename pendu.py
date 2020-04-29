@@ -9,6 +9,8 @@ import os
 
 # ouvre le fichier 'liste_mots.txt' contenant les mots à trouver, lis le fichier et transforme la chaîne de mots en
 # liste
+scores = []
+nom_joueur = entrer_nom_joueur(scores)
 with open('liste_mots.txt', 'r') as fichier_txt:
     liste_mots = fichier_txt.read()
     liste_mots = liste_mots.split("\n")
