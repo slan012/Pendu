@@ -20,7 +20,7 @@ with open('liste_mots.txt', 'r') as fichier_txt:
 # respectant la longueur de la liste)
 print("Niveau de jeu :\n\n"
       "1 - Facile, les yeux fermés\n"
-      "2 - Normal, mais peu mieux faire\n"
+      "2 - Normal, mais peut mieux faire\n"
       "3 - Difficile, ça commence à causer\n"
       "4 - Hardcore! Accroche toi Huguette!\n")
 niveau_jeu = input()
