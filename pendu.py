@@ -41,7 +41,7 @@ mot_choisi = liste_mots_tries[randrange(0, len(liste_mots_tries) - 1)]
 # Vérifie si une 'lettre' est dans le 'mot' et affiche le mot avec des étoiles sur les lettres qui n'y sont pas
 # def verifier_lettre(lettre, mot) 
 
-print(mot_choisi)
+
 mot_choisi = list(mot_choisi)
 mot_cache = list(mot_choisi)
 nbre_coups = 8
