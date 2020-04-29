@@ -2,6 +2,8 @@
 
 from random import randrange
 
+lettre_chiffre = True
+
 # début de partie le joueur donne son nom
 # si aucun score enregistré -> score = 0 pts => {'nom_joueur' : 0}
 
@@ -25,6 +27,24 @@ nbre_coups = 8
 
 for i, element in enumerate(mot_cache):
     mot_cache[i] = '*'
+
+# fonction qui vérifie si la lettre tapée par le joueur n'est ni un entier ni un flottant
+while lettre_chiffre:
+    try:
+        lettre = input("Lettre : ")
+        lettre = int(lettre)
+        print('Pas de chiffre!')
+
+    except ValueError:
+        try:
+            lettre = float(lettre)
+            lettre_chiffre = True
+            print('Pas de chiffre!')
+        except ValueError:
+            lettre_chiffre = False
+
+
+
 
 while nbre_coups > 0:
     mot_choisi = list(mot_choisi)
