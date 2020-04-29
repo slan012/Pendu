@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from random import randrange
+from fonctions import *
+import os
 
 lettre_chiffre = True
+niveau_jeu = 1
 
 # début de partie le joueur donne son nom
 # si aucun score enregistré -> score = 0 pts => {'nom_joueur' : 0}
@@ -15,7 +18,25 @@ with open('liste_mots.txt', 'r') as fichier_txt:
 
 # choisis un mot au hasard (random) dans la liste (effectue un random.randrange sur l'index de liste_mots en
 # respectant la longueur de la liste)
-mot_choisi = liste_mots[randrange(0, len(liste_mots) - 1)]
+print("Niveau de jeu :\n\n"
+      "1 - Facile, les yeux fermés\n"
+      "2 - Normal, mais peu mieux faire\n"
+      "3 - Difficile, ça commence à causer\n"
+      "4 - Hardcore! Accroche toi Huguette!\n")
+niveau_jeu = input()
+niveau_jeu = int(niveau_jeu)
+if niveau_jeu == 1:
+    longeur_mot = 4
+elif niveau_jeu == 2:
+    longeur_mot = 6
+elif niveau_jeu == 3:
+    longeur_mot = 8
+elif niveau_jeu == 4:
+    longeur_mot = 9
+
+
+liste_mots_tries = [mot for mot in liste_mots if len(mot) < longeur_mot]
+mot_choisi = liste_mots_tries[randrange(0, len(liste_mots_tries) - 1)]
 
 # Vérifie si une 'lettre' est dans le 'mot' et affiche le mot avec des étoiles sur les lettres qui n'y sont pas
 # def verifier_lettre(lettre, mot) 
@@ -27,36 +48,22 @@ nbre_coups = 8
 
 for i, element in enumerate(mot_cache):
     mot_cache[i] = '*'
+print("[ {} ]".format(" ".join(mot_cache)))
 
-# fonction qui vérifie si la lettre tapée par le joueur n'est ni un entier ni un flottant
-while lettre_chiffre:
-    try:
-        lettre = input("Lettre : ")
-        lettre = int(lettre)
-        print('Pas de chiffre!')
-
-    except ValueError:
-        try:
-            lettre = float(lettre)
-            lettre_chiffre = True
-            print('Pas de chiffre!')
-        except ValueError:
-            lettre_chiffre = False
-
-
-
-
-while nbre_coups > 0:
+while nbre_coups > 0 and '*' in mot_cache:
     mot_choisi = list(mot_choisi)
-    lettre = input("Lettre : ")
+    lettre, coup_valide = entrer_lettre()
     for i, element in enumerate(mot_choisi):
         if element == lettre.upper():
             mot_cache[i] = lettre.upper()
-    print(" ".join(mot_cache))
-    nbre_coups -= 1
+    print("[ {} ]".format(" ".join(mot_cache)))
+    if coup_valide:
+        nbre_coups -= 1
 
 if nbre_coups == 0:
     print("Nombre de coups max atteint")
+else:
+    print("C\'est gagné!! Nombre de coups restants : {}".format(nbre_coups))
 
 # mot de 8 lettres max choisi au hasard dans une liste
 # joueur saisi une lettre par tour (vérifier que c'est bien le cas (len(mot))
@@ -67,3 +74,5 @@ if nbre_coups == 0:
 
 # 8 coups maximum -> sinon partie perdu
 # si mot trouvé -> score += nbre de coups restants
+
+os.system("pause")
