@@ -11,9 +11,6 @@ with open('liste_mots.txt', 'r') as fichier_txt:
     liste_mots = fichier_txt.read()
     liste_mots = liste_mots.split("\n")
 
-
-
-
 # choisis un mot au hasard (random) dans la liste (effectue un random.randrange sur l'index de liste_mots en
 # respectant la longueur de la liste)
 mot_choisi = liste_mots[randrange(0, len(liste_mots) - 1)]
