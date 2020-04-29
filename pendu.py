@@ -56,12 +56,14 @@ while nbre_coups > 0 and '*' in mot_cache:
     for i, element in enumerate(mot_choisi):
         if element == lettre.upper():
             mot_cache[i] = lettre.upper()
-    print("[ {} ]".format(" ".join(mot_cache)))
+    print("\n[ {} ]".format(" ".join(mot_cache)))
     if coup_valide:
         nbre_coups -= 1
+        print ("\nNombre de coups restants : {}".format(nbre_coups))
 
 if nbre_coups == 0:
-    print("Nombre de coups max atteint")
+    print("\nPERDU! Nombre de coups max atteint")
+    print("\nLe mot était : {}".format(mot_choisi.upper()))
 else:
     print("C\'est gagné!! Nombre de coups restants : {}".format(nbre_coups))
 

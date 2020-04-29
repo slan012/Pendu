@@ -7,7 +7,7 @@ def entrer_lettre():
     lettre = 'None'
     while lettre_chiffre or len(lettre) != 1:
         try:
-            lettre = input("Lettre : ")
+            lettre = input("\nLettre : ")
             lettre = int(lettre)
             print('Pas de chiffre!')
 
