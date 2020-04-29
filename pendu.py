@@ -45,6 +45,7 @@ mot_choisi = liste_mots_tries[randrange(0, len(liste_mots_tries) - 1)]
 mot_choisi = list(mot_choisi)
 mot_cache = list(mot_choisi)
 nbre_coups = 8
+print(mot_choisi)
 
 for i, element in enumerate(mot_cache):
     mot_cache[i] = '*'
@@ -52,6 +53,7 @@ print("[ {} ]".format(" ".join(mot_cache)))
 
 while nbre_coups > 0 and '*' in mot_cache:
     mot_choisi = list(mot_choisi)
+    print("\nNombre de coups restants : {}".format(nbre_coups))
     lettre, coup_valide = entrer_lettre()
     for i, element in enumerate(mot_choisi):
         if element == lettre.upper():
@@ -59,14 +61,14 @@ while nbre_coups > 0 and '*' in mot_cache:
     print("\n[ {} ]".format(" ".join(mot_cache)))
     if coup_valide:
         nbre_coups -= 1
-        print ("\nNombre de coups restants : {}".format(nbre_coups))
 
-if nbre_coups == 0:
+
+if nbre_coups == 0 and '*' in mot_cache:
     print("\nPERDU! Nombre de coups max atteint")
     mot_choisi = " ".join(mot_choisi)
     print("\nLe mot était : {}".format(mot_choisi.upper()))
 else:
-    print("C\'est gagné!! Nombre de coups restants : {}".format(nbre_coups))
+    print("C\'est gagné!! Nombre de coups restants : {}".format(nbre_coups+1))
 
 # mot de 8 lettres max choisi au hasard dans une liste
 # joueur saisi une lettre par tour (vérifier que c'est bien le cas (len(mot))
