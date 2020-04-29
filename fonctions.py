@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # fichier rassemblant toutes les fonctions nécessaires à pendu.py
-
+import pickle
 # fonction qui vérifie si la lettre tapée par le joueur n'est ni un entier ni un flottant
 def entrer_lettre():
     lettre_chiffre = True
@@ -45,6 +45,8 @@ def selection_niveau():
 
     return longueur_mot
 
+# fonction qui permet le déroulement du jeu. En paramètres : le 'mot_choisi' aléatoirement et le 'nbre_coups' autorisés
+# pendant la partie. Renvoie le nombre de coups restant pour incrémenter le score du joueur.
 def deviner_mot(mot_choisi, nbre_coups):
     mot_cache = list(mot_choisi)
     for i, element in enumerate(mot_cache):
@@ -89,3 +91,28 @@ def entrer_nom_joueur(scores):
                     print("Nom de joueur non valide")
         joueur_existe_deja = False
     return nom_joueur
+
+# Fonction qui affiche le tableau des meilleurs scores classés dans l'ordre décroissant
+# Paramètre d'entrée : 'scores', chargé dans le programme principal depuis le fichier 'donnees'
+def affichage_scores(scores):
+    print("Tableau des meilleurs scores :")
+    liste_score = []
+    for i, element in scores.items():
+        score_ajouter = (element, i)
+        liste_score.append((score_ajouter))
+    liste_score.sort(reverse=True)
+    for i, elt in enumerate(liste_score):
+        print("{} - Score : {}".format(liste_score[i][1], liste_score[i][0]))
+
+# Fonction qui va lire les scores des joueurs enregistrés dans dictionnaire stocké dans 'donnees'
+# Si le fichier 'donnees' n'existe pas, la fonction crée un dictionnaire vide
+# La fonction renvoie le dictionnaire 'scores'
+def dump_scores():
+    try:
+        with open('donnees','rb') as fichier:
+            fichier_scores = pickle.Unpickler(fichier)
+            scores = fichier_scores.load()
+    except FileNotFoundError:
+            print("Pas de sauvegardes")
+            scores = {}
+    return scores

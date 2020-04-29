@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import pickle
 from random import randrange
 from fonctions import *
 import os
@@ -10,24 +9,8 @@ import os
 
 # ouvre le fichier 'liste_mots.txt' contenant les mots à trouver, lis le fichier et transforme la chaîne de mots en
 # liste
-try:
-    with open('donnees','rb') as fichier:
-        fichier_scores = pickle.Unpickler(fichier)
-        scores = fichier_scores.load()
-except FileNotFoundError:
-        print("Pas de sauvegardes")
-        scores = {}
-
-print("Tableau des meilleurs scores :")
-liste_score = []
-for i, element in scores.items():
-    score_ajouter = (element, i)
-    liste_score.append((score_ajouter))
-liste_score.sort(reverse=True)
-for i, elt in enumerate(liste_score):
-    print("{} - Score : {}".format(liste_score[i][1], liste_score[i][0]))
-
-
+scores = dump_scores()
+affichage_scores(scores)
 
 nom_joueur = entrer_nom_joueur(scores)
 
