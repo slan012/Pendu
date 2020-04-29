@@ -18,6 +18,17 @@ except FileNotFoundError:
         print("Pas de sauvegardes")
         scores = {}
 
+print("Tableau des meilleurs scores :")
+liste_score = []
+for i, element in scores.items():
+    score_ajouter = (element, i)
+    liste_score.append((score_ajouter))
+liste_score.sort(reverse=True)
+for i, elt in enumerate(liste_score):
+    print("{} - Score : {}".format(liste_score[i][1], liste_score[i][0]))
+
+
+
 nom_joueur = entrer_nom_joueur(scores)
 
 with open('liste_mots.txt', 'r') as fichier_txt:
