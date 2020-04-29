@@ -73,12 +73,19 @@ def deviner_mot(mot_choisi, nbre_coups):
     return nbre_coups
 
 def entrer_nom_joueur(scores):
+
     nom_joueur = input("\nRentre ton nom : ")
     joueur_existe_deja = True  # Test si joueur est déjà dans la liste des scores
+    while len(nom_joueur) <=0:
+        print("Nom de joueur non valide")
+        nom_joueur = input("\nRentre ton nom : ")
     while joueur_existe_deja:  # Parcours du tableau
         for i in scores.keys():
             while nom_joueur in i:
-                nom_joueur = input("Nom de joueur déjà existant, essaye un autre nom :")
+                try :
+                    nom_joueur = input("Nom de joueur déjà existant, essaye un autre nom :")
+                    assert len(nom_joueur) > 0
+                except AssertionError:
+                    print("Nom de joueur non valide")
         joueur_existe_deja = False
-
     return nom_joueur

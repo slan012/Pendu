@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import pickle
 from random import randrange
 from fonctions import *
 import os
@@ -9,8 +10,16 @@ import os
 
 # ouvre le fichier 'liste_mots.txt' contenant les mots à trouver, lis le fichier et transforme la chaîne de mots en
 # liste
-scores = []
+try:
+    with open('donnees','rb') as fichier:
+        fichier_scores = pickle.Unpickler(fichier)
+        scores = fichier_scores.load()
+except FileNotFoundError:
+        print("Pas de sauvegardes")
+        scores = {}
+
 nom_joueur = entrer_nom_joueur(scores)
+
 with open('liste_mots.txt', 'r') as fichier_txt:
     liste_mots = fichier_txt.read()
     liste_mots = liste_mots.split("\n")
@@ -35,6 +44,13 @@ nbre_coups = 8
 # appel de la fonction deviner_mot() qui fait deviner le mot au joueur
 # renvoie le nombre de points en fonction du nombre de coups restants au moment où le mot est trouvé
 nbre_points = deviner_mot(mot_choisi, nbre_coups )
+scores[nom_joueur] = nbre_points
+
+with open('donnees','wb') as fichier:
+    fichier_scores = pickle.Pickler(fichier)
+    fichier_scores.dump(scores)
+
+print(scores)
 
 # mot de 8 lettres max choisi au hasard dans une liste
 # joueur saisi une lettre par tour (vérifier que c'est bien le cas (len(mot))
@@ -46,4 +62,4 @@ nbre_points = deviner_mot(mot_choisi, nbre_coups )
 # 8 coups maximum -> sinon partie perdu
 # si mot trouvé -> score += nbre de coups restants
 
-os.system("pause")
+# os.system("pause")
