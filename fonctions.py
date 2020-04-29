@@ -52,17 +52,21 @@ def deviner_mot(mot_choisi, nbre_coups):
     for i, element in enumerate(mot_cache):
         mot_cache[i] = '*'
     print("[ {} ]".format(" ".join(mot_cache)))
-
+    liste_lettres = []
     while nbre_coups > 0 and '*' in mot_cache:
         mot_choisi = list(mot_choisi)
-        print("\nNombre de coups restants : {}".format(nbre_coups))
+        print("Nombre de coups restants : {}".format(nbre_coups))
         lettre, coup_valide = entrer_lettre()
+
+
         for i, element in enumerate(mot_choisi):
             if element == lettre.upper():
                 mot_cache[i] = lettre.upper()
         print("\n[ {} ]".format(" ".join(mot_cache)))
         if coup_valide:
             nbre_coups -= 1
+            liste_lettres.append(lettre)
+            print("\nLettres déjà jouées: {}".format(", ".join(liste_lettres)))
 
     if nbre_coups == 0 and '*' in mot_cache:
         print("\nPERDU! Nombre de coups max atteint")

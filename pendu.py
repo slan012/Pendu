@@ -12,7 +12,12 @@ import os
 scores = dump_scores()
 affichage_scores(scores)
 
-nom_joueur = entrer_nom_joueur(scores)
+enregistrer_partie = input("Veux-tu rentrer ton nom pour enregistrer ton score (o/n) ? ")
+if enregistrer_partie.lower() == 'o':
+    nom_joueur = entrer_nom_joueur(scores)
+    enregistrement_partie = True
+else:
+    enregistrement_partie = False
 
 with open('liste_mots.txt', 'r') as fichier_txt:
     liste_mots = fichier_txt.read()
@@ -38,11 +43,11 @@ nbre_coups = 8
 # appel de la fonction deviner_mot() qui fait deviner le mot au joueur
 # renvoie le nombre de points en fonction du nombre de coups restants au moment où le mot est trouvé
 nbre_points = deviner_mot(mot_choisi, nbre_coups )
-scores[nom_joueur] = nbre_points
-
-with open('donnees','wb') as fichier:
-    fichier_scores = pickle.Pickler(fichier)
-    fichier_scores.dump(scores)
+if enregistrement_partie :
+    scores[nom_joueur] = nbre_points
+    with open('donnees','wb') as fichier:
+        fichier_scores = pickle.Pickler(fichier)
+        fichier_scores.dump(scores)
 
 print(scores)
 
