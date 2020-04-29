@@ -63,6 +63,7 @@ while nbre_coups > 0 and '*' in mot_cache:
 
 if nbre_coups == 0:
     print("\nPERDU! Nombre de coups max atteint")
+    mot_choisi = " ".join(mot_choisi)
     print("\nLe mot était : {}".format(mot_choisi.upper()))
 else:
     print("C\'est gagné!! Nombre de coups restants : {}".format(nbre_coups))
