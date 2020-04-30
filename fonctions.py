@@ -58,25 +58,25 @@ def selection_niveau():
 # fonction qui permet le déroulement du jeu. En paramètres : le 'mot_choisi' aléatoirement et le 'nbre_coups' autorisés
 # pendant la partie. Renvoie le nombre de coups restant pour incrémenter le score du joueur.
 def deviner_mot(mot_choisi, nbre_coups):
-    mot_cache = list(mot_choisi)
-    for i, element in enumerate(mot_cache):
-        mot_cache[i] = '*'
-    print("[ {} ]".format(" ".join(mot_cache)))
-    liste_lettres = []
-    while nbre_coups > 0 and '*' in mot_cache:
-        mot_choisi = list(mot_choisi)
-        print("Nombre de coups restants : {}".format(nbre_coups))
-        lettre, coup_valide = entrer_lettre()
-
-
-        for i, element in enumerate(mot_choisi):
-            if element == lettre.upper():
-                mot_cache[i] = lettre.upper()
-        print("\n[ {} ]".format(" ".join(mot_cache)))
-        if coup_valide:
-            nbre_coups -= 1
-            liste_lettres.append(lettre)
-            print("\nLettres déjà jouées: {}".format(", ".join(liste_lettres)))
+    tours = 1
+    while tours <= 5:
+        mot_cache = list(mot_choisi)
+        for i, element in enumerate(mot_cache):
+            mot_cache[i] = '*'
+        print("[ {} ]".format(" ".join(mot_cache)))
+        liste_lettres = []
+        while nbre_coups > 0 and '*' in mot_cache:
+            mot_choisi = list(mot_choisi)
+            print("\nNombre de coups restants : {}".format(nbre_coups))
+            lettre, coup_valide = entrer_lettre()
+            for i, element in enumerate(mot_choisi):
+                if element == lettre.upper():
+                    mot_cache[i] = lettre.upper()
+            print("\n[ {} ]".format(" ".join(mot_cache)))
+            if coup_valide:
+                nbre_coups -= 1
+                liste_lettres.append(lettre)
+                print("\nLettres déjà jouées: {}".format(", ".join(liste_lettres)))
 
         if nbre_coups == 0 and '*' in mot_cache:
             print("\nPERDU! Nombre de coups max atteint")
