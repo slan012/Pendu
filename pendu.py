@@ -66,4 +66,4 @@ print(scores)
 # 8 coups maximum -> sinon partie perdu
 # si mot trouvé -> score += nbre de coups restants
 
-# os.system("pause")
+os.system("pause")

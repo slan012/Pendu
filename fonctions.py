@@ -61,11 +61,11 @@ def deviner_mot(mot_choisi, nbre_coups):
     mot_cache = list(mot_choisi)
     for i, element in enumerate(mot_cache):
         mot_cache[i] = '*'
-    print("[ {} ]".format(" ".join(mot_cache)))
+    print("\n[ {} ]".format(" ".join(mot_cache)))
     liste_lettres = []
     while nbre_coups > 0 and '*' in mot_cache:
         mot_choisi = list(mot_choisi)
-        print("Nombre de coups restants : {}".format(nbre_coups))
+        print("\nNombre de coups restants : {}".format(nbre_coups))
         lettre, coup_valide = entrer_lettre()
         for i, element in enumerate(mot_choisi):
             if element == lettre.upper():
