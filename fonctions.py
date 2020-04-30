@@ -82,7 +82,7 @@ def deviner_mot(mot_choisi, nbre_coups):
         print("\nLe mot était : {}".format(mot_choisi.upper()))
         score = 0
     else:
-        print("C\'est gagné!! Nombre de coups restants : {}".format(nbre_coups + 1))
+        print("C\'est gagné!! Nombre de points : {}".format(nbre_coups + 1))
         score = nbre_coups+1
 
     return score
