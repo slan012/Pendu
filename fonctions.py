@@ -80,16 +80,16 @@ def deviner_mot(mot_choisi, nbre_coups):
         print("\nPERDU! Nombre de coups max atteint")
         mot_choisi = " ".join(mot_choisi)
         print("\nLe mot était : {}".format(mot_choisi.upper()))
-        score = 0
+        score_tour = 0
     else:
         print("C\'est gagné!! Nombre de points : {}".format(nbre_coups + 1))
-        score = nbre_coups+1
+        score_tour = nbre_coups+1
 
-    return score
+    return score_tour
 
 def entrer_nom_joueur(scores):
 
-    nom_joueur = input("\nRentre ton nom : ")
+    nom_joueur = input("\nDans ce cas, entre ton nom : ")
     joueur_existe_deja = True  # Test si joueur est déjà dans la liste des scores
     while len(nom_joueur) <=0:
         print("Nom de joueur non valide")
