@@ -10,7 +10,8 @@ import os
 # ouvre le fichier 'liste_mots.txt' contenant les mots à trouver, lis le fichier et transforme la chaîne de mots en
 # liste
 scores = dump_scores()
-affichage_scores(scores)
+if scores != {}:
+    affichage_scores(scores)
 
 enregistrer_partie = str()
 while enregistrer_partie.lower() != 'o' and enregistrer_partie.lower() != 'n':
