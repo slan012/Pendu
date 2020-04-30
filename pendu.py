@@ -38,7 +38,7 @@ liste_mots_tries = [mot for mot in liste_mots if len(mot) < longueur_mot]
 tours = 1
 nbre_coups = 8
 score_total = 0
-while tours <= 3:
+while tours <= 4:
     print("\nTour {}".format(tours))
     mot_choisi = liste_mots_tries[randrange(0, len(liste_mots_tries) - 1)]
     mot_choisi = list(mot_choisi)
