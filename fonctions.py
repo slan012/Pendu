@@ -89,11 +89,11 @@ def deviner_mot(mot_choisi, nbre_coups):
 
 def entrer_nom_joueur(scores):
 
-    nom_joueur = input("\nDans ce cas, entre ton nom : ")
+    nom_joueur = input("\nEntre ton nom pour enregistrer le score: ")
     joueur_existe_deja = True  # Test si joueur est déjà dans la liste des scores
-    while len(nom_joueur) <=0:
+    if not nom_joueur.isalnum():
         print("Nom de joueur non valide")
-        nom_joueur = input("\nRentre ton nom : ")
+        return entrer_nom_joueur(scores)
     while joueur_existe_deja:  # Parcours du tableau
         for i in scores.keys():
             while nom_joueur in i:
