@@ -85,6 +85,7 @@ def deviner_mot(mot_choisi, nbre_coups):
         else:
             print("C\'est gagné!! Nombre de coups restants : {}".format(nbre_coups + 1))
             score += (nbre_coups+1)
+        tours += 1
 
     return score
 
