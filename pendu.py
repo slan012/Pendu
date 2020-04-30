@@ -30,19 +30,19 @@ longueur_mot = selection_niveau()
 # choisis un mot au hasard (random) dans la liste (effectue un random.randrange sur l'index de liste_mots en
 # respectant la longueur de la liste)
 liste_mots_tries = [mot for mot in liste_mots if len(mot) < longueur_mot]
-mot_choisi = liste_mots_tries[randrange(0, len(liste_mots_tries) - 1)]
-
-# Vérifie si une 'lettre' est dans le 'mot' et affiche le mot avec des étoiles sur les lettres qui n'y sont pas
-# def verifier_lettre(lettre, mot) 
-mot_choisi = list(mot_choisi)
-nbre_coups = 8
-# Debogage!!!
-#print(mot_choisi)
-# Debogage!!!
 
 # appel de la fonction deviner_mot() qui fait deviner le mot au joueur
 # renvoie le nombre de points en fonction du nombre de coups restants au moment où le mot est trouvé
-nbre_points = deviner_mot(mot_choisi, nbre_coups )
+tours = 1
+nbre_coups = 8
+while tours <= 5:
+    print("\nTour {}".format(tours))
+    mot_choisi = liste_mots_tries[randrange(0, len(liste_mots_tries) - 1)]
+    mot_choisi = list(mot_choisi)
+    nbre_points = deviner_mot(mot_choisi, nbre_coups )
+    tours +=1
+print("Ton score final : {}".format(nbre_points))
+
 if enregistrement_partie :
     scores[nom_joueur] = nbre_points
     with open('donnees','wb') as fichier:
