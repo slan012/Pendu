@@ -12,7 +12,7 @@ import os
 scores = dump_scores()
 affichage_scores(scores)
 
-enregistrer_partie = input("Veux-tu rentrer ton nom pour enregistrer ton score (o/n) ? ")
+enregistrer_partie = input("\nVeux-tu rentrer ton nom pour enregistrer ton score (o/n) ? ")
 if enregistrer_partie.lower() == 'o':
     nom_joueur = entrer_nom_joueur(scores)
     enregistrement_partie = True
