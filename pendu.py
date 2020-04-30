@@ -4,11 +4,8 @@ from random import randrange
 from fonctions import *
 import os
 
-# début de partie le joueur donne son nom
-# si aucun score enregistré -> score = 0 pts => {'nom_joueur' : 0}
-
-# ouvre le fichier 'liste_mots.txt' contenant les mots à trouver, lis le fichier et transforme la chaîne de mots en
-# liste
+print("\n******************** Jeu du Pendu ********************")
+# Fonction dump_scores() lit le
 scores = dump_scores()
 if scores != {}:
     affichage_scores(scores)
@@ -54,17 +51,5 @@ if enregistrement_partie :
     with open('donnees','wb') as fichier:
         fichier_scores = pickle.Pickler(fichier)
         fichier_scores.dump(scores)
-
-print(scores)
-
-# mot de 8 lettres max choisi au hasard dans une liste
-# joueur saisi une lettre par tour (vérifier que c'est bien le cas (len(mot))
-
-# si lettre est dans le mot 
-# afficher la (ou les) lettre(s) dans le mot à la bonne place
-# mettre etoiles à la place des autres lettres
-
-# 8 coups maximum -> sinon partie perdu
-# si mot trouvé -> score += nbre de coups restants
 
 os.system("pause")

@@ -108,14 +108,14 @@ def entrer_nom_joueur(scores):
 # Fonction qui affiche le tableau des meilleurs scores classés dans l'ordre décroissant
 # Paramètre d'entrée : 'scores', chargé dans le programme principal depuis le fichier 'donnees'
 def affichage_scores(scores):
-    print("\Tableau des meilleurs scores :\n")
+    print("\nTableau des meilleurs scores :\n")
     liste_score = []
     for i, element in scores.items():
         score_ajouter = (element, i)
         liste_score.append((score_ajouter))
     liste_score.sort(reverse=True)
     for i, elt in enumerate(liste_score):
-        print("{} - Score : {}".format(liste_score[i][1], liste_score[i][0]))
+        print("\n{} : {} pts".format(liste_score[i][1], liste_score[i][0]))
 
 # Fonction qui va lire les scores des joueurs enregistrés dans dictionnaire stocké dans 'donnees'
 # Si le fichier 'donnees' n'existe pas, la fonction crée un dictionnaire vide
